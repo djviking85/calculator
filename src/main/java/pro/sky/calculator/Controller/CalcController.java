@@ -1,45 +1,59 @@
-package pro.sky.calculator;
+package pro.sky.calculator.Controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pro.sky.calculator.Services.CalcService;
+import pro.sky.calculator.Exceptions.DivideToZeroException;
+import pro.sky.calculator.Exceptions.NoNumberExceptions;
 
 @RestController
 @RequestMapping("/calculator")
-public class calcController {
-    public calcController(CalcService calcService) {
+public class CalcController {
+    public CalcController(CalcService calcService) {
         this.calcService = calcService;
     }
+
     // честно взял с видео Алексея, тк. ни в контроллере ни в сервисе если указать num==0 -
     // и вывести на ноль делить нельзя = выскакивала ошибка 500, и все стопилось
-@ExceptionHandler(DivideToZeroException.class)
-public ResponseEntity <?> handleDevideToZero (DivideToZeroException e) {
-    return ResponseEntity.badRequest().body(" Делить на ноль нельзя");
-}
+    @ExceptionHandler(DivideToZeroException.class)
+    public ResponseEntity<?> handleDevideToZero(DivideToZeroException e) {
+        return ResponseEntity.badRequest().body(" Делить на ноль нельзя");
+    }
+
+    @ExceptionHandler(NoNumberExceptions.class)
+    public ResponseEntity<?> noNumberInPrint(NoNumberExceptions e) {
+        return ResponseEntity.badRequest().body(" число не может бьыть пустым");
+    }
+
     private final CalcService calcService;
-    @GetMapping ()
+
+    @GetMapping()
     public String helloCalculator() {
         return "Добро пожаловать в калькулятор!";
     }
 
-    @GetMapping ("/plus")
-    public String plus(@RequestParam("num1")int num1, @RequestParam ("num2") int num2 ) {
+    @GetMapping("/plus")
+    public String plus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
         int resultat = calcService.plus(num1, num2);
         return num1 + "+" + num2 + "=" + resultat;
     }
-    @GetMapping ("/minus")
-    public String minus(@RequestParam("num1")int num1, @RequestParam ("num2") int num2 ) {
+
+    @GetMapping("/minus")
+    public String minus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
         int resultat = calcService.minus(num1, num2);
         return num1 + "-" + num2 + "=" + resultat;
     }
-    @GetMapping ("/multiply")
-    public String multiply(@RequestParam("num1")int num1, @RequestParam ("num2") int num2 ) {
+
+    @GetMapping("/multiply")
+    public String multiply(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
         int resultat = calcService.multiply(num1, num2);
         return num1 + "*" + num2 + "=" + resultat;
     }
-    @GetMapping ("/divide")
-    public String divide(@RequestParam("num1")int num1, @RequestParam ("num2") int num2 ) {
+
+    @GetMapping("/divide")
+    public String divide(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
         int resultat = calcService.divide(num1, num2);
-            return num1 + "/" + num2 + "=" + resultat;
+        return num1 + "/" + num2 + "=" + resultat;
     }
 }
 //1. Метод по адресу /calculator должен вернуть приветствие “Добро пожаловать в калькулятор".
