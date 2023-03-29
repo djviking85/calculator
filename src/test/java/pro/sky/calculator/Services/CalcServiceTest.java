@@ -98,8 +98,8 @@ class CalcServiceTest {
         Integer num1 = 100;
         Integer num2 = 100;
         // подготовка ожидаемого результата
-        String answer = "100/100 = 1";
-        Integer expectedResult = num1 * num2;
+        String answer = "100 : 100 = 1";
+        Integer expectedResult = num1 / num2;
         // анчало теста
         Integer actualResult = calcService.divide(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -111,8 +111,8 @@ class CalcServiceTest {
         Integer num1 = 100;
         Integer num2 = 5;
         // подготовка ожидаемого результата
-        String answer = "100/5 = 20";
-        Integer expectedResult = num1 * num2;
+        String answer = "100 : 5 = 20";
+        Integer expectedResult = num1 / num2;
         // анчало теста
         Integer actualResult = calcService.divide(num1, num2);
         assertEquals(expectedResult, actualResult);
