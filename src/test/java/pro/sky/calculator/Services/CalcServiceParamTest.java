@@ -41,7 +41,7 @@ class CalcServiceParamTest {
     public static Stream<Arguments> minusParams() {
         return Stream.of(
                 Arguments.of(2, 2, ResulGenerator.minusResult(2, 2, 0)),
-                Arguments.of(100, 5, ResulGenerator.minusResult(100, 5, 95))
+                Arguments.of(100, 5, ResulGenerator.minusResult(100, 5,95))
         );
     }
     public static Stream<Arguments> multiplyParams() {
@@ -52,22 +52,22 @@ class CalcServiceParamTest {
     }
     @ParameterizedTest
     @MethodSource("divideParams")
-    void devideSuccess(int num1, int num2, String excpectedResult) {
+    void devideSuccess(int num1, int num2, ResponseEntity<String> excpectedResult) {
         Assertions.assertEquals(calcService.divide(num1, num2), excpectedResult);
     }
     @ParameterizedTest
     @MethodSource("plusParams")
-    void plusSuccess(int num1, int num2, String excpectedResult) {
+    void plusSuccess(int num1, int num2, ResponseEntity<String> excpectedResult) {
         Assertions.assertEquals(calcService.plus(num1, num2), excpectedResult);
     }
     @ParameterizedTest
     @MethodSource("minusParams")
-    void minusSuccess(int num1, int num2, String excpectedResult) {
+    void minusSuccess(int num1, int num2, ResponseEntity<String> excpectedResult) {
         Assertions.assertEquals(calcService.minus(num1, num2), excpectedResult);
     }
     @ParameterizedTest
     @MethodSource("multiplyParams")
-    void multiplySuccess(int num1, int num2, String excpectedResult) {
+    void multiplySuccess(int num1, int num2, ResponseEntity<String> excpectedResult) {
         Assertions.assertEquals(calcService.multiply(num1, num2), excpectedResult);
     }
 }

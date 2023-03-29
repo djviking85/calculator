@@ -1,13 +1,13 @@
 package pro.sky.calculator.Services;
 
-import pro.sky.calculator.Exceptions.NoNumberExceptions;
+import org.springframework.http.ResponseEntity;
 
 public interface CalcService {
-    Integer plus(Integer num1, Integer num2);
+    ResponseEntity<String> plus(Integer num1, Integer num2);
 
-    Integer minus(Integer num1, Integer num2);
+    ResponseEntity<String> minus(Integer num1, Integer num2);
 
-    Integer multiply(Integer num1, Integer num2);
+    ResponseEntity<String> multiply(Integer num1, Integer num2);
 
-    Integer divide(Integer num1, Integer num2);
+    ResponseEntity<String> divide(Integer num1, Integer num2);
 }

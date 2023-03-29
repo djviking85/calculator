@@ -32,25 +32,25 @@ public class CalcController {
 
     @GetMapping("/plus")
     public String plus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        Integer resultat = calcService.plus(num1, num2);
+        ResponseEntity<String> resultat = calcService.plus(num1, num2);
         return num1 + "+" + num2 + "=" + resultat;
     }
 
     @GetMapping("/minus")
     public String minus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        int resultat = calcService.minus(num1, num2);
+        ResponseEntity<String> resultat = calcService.minus(num1, num2);
         return num1 + "-" + num2 + "=" + resultat;
     }
 
     @GetMapping("/multiply")
     public String multiply(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        int resultat = calcService.multiply(num1, num2);
+        ResponseEntity<String> resultat = calcService.multiply(num1, num2);
         return num1 + "*" + num2 + "=" + resultat;
     }
 
     @GetMapping("/divide")
     public String divide(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        int resultat = calcService.divide(num1, num2);
+        ResponseEntity<String> resultat = calcService.divide(num1, num2);
         return num1 + "/" + num2 + "=" + resultat;
     }
 }

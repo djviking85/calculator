@@ -25,7 +25,7 @@ class CalcServiceTest {
         String answer = "2+5 = 7";
         Integer  expectedResult = num1 + num2;
         // анчало теста
-        Integer actualResult = calcService.plus(num1, num2);
+        ResponseEntity<String> actualResult = calcService.plus(num1, num2);
         assertEquals(expectedResult, actualResult);
 
     }
@@ -38,7 +38,7 @@ class CalcServiceTest {
         String answer = "4+4 = 8";
         Integer  expectedResult = num1 + num2;
         // анчало теста
-        Integer actualResult = calcService.plus(num1, num2);
+        ResponseEntity<String> actualResult = calcService.plus(num1, num2);
         assertEquals(expectedResult, actualResult);
 
     }
@@ -51,7 +51,7 @@ class CalcServiceTest {
         String answer = "2-5 = -3";
         Integer  expectedResult = num1 - num2;
         // анчало теста
-        Integer actualResult = calcService.minus(num1, num2);
+        ResponseEntity<String> actualResult = calcService.minus(num1, num2);
         assertEquals(expectedResult, actualResult);
     }
     @Test
@@ -63,7 +63,7 @@ class CalcServiceTest {
         String answer = "7+3 = 5";
         Integer  expectedResult = num1 - num2;
         // анчало теста
-        Integer actualResult = calcService.minus(num1, num2);
+        ResponseEntity<String> actualResult = calcService.minus(num1, num2);
         assertEquals(expectedResult, actualResult);
     }
     @Test
@@ -75,7 +75,7 @@ class CalcServiceTest {
         String answer = "2*5 = 10";
         Integer  expectedResult = num1 * num2;
         // анчало теста
-        Integer actualResult = calcService.multiply(num1, num2);
+        ResponseEntity<String> actualResult = calcService.multiply(num1, num2);
         assertEquals(expectedResult, actualResult);
     }
     @Test
@@ -87,7 +87,7 @@ class CalcServiceTest {
         String answer = "100*100 = 10000";
         Integer expectedResult = num1 * num2;
         // анчало теста
-        Integer actualResult = calcService.multiply(num1, num2);
+        ResponseEntity<String> actualResult = calcService.multiply(num1, num2);
         assertEquals(expectedResult, actualResult);
     }
 
@@ -101,7 +101,7 @@ class CalcServiceTest {
         String answer = "100 : 100 = 1";
         Integer expectedResult = num1 / num2;
         // анчало теста
-        Integer actualResult = calcService.divide(num1, num2);
+        ResponseEntity<String> actualResult = calcService.divide(num1, num2);
         assertEquals(expectedResult, actualResult);
     }
 
@@ -114,7 +114,7 @@ class CalcServiceTest {
         String answer = "100 : 5 = 20";
         Integer expectedResult = num1 / num2;
         // анчало теста
-        Integer actualResult = calcService.divide(num1, num2);
+        ResponseEntity<String> actualResult = calcService.divide(num1, num2);
         assertEquals(expectedResult, actualResult);
     }
 

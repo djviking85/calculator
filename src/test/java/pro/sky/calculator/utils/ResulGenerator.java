@@ -17,7 +17,7 @@ public class ResulGenerator {
         return ResponseEntity.ok(String.format("%s * %s = %s", num1, num2, result));
     }
 
-    public static String divideResult(Integer num1, Integer num2, Integer result) {
-        return String.format("%s : %s = %s", num1, num2, result);
+    public static ResponseEntity<String> divideResult(Integer num1, Integer num2, Integer result) {
+        return ResponseEntity.ok(String.format("%s : %s = %s", num1, num2, result));
     }
 }
