@@ -26,7 +26,7 @@ public class CalcServiceImpl implements CalcService {
 
     public Integer divide(Integer num1, Integer num2) {
         if (num2 == 0) {
-            throw new WrongArgumentException(" нужно добавить число в ячейку 2 и на ноль делить нелья");
+            throw new WrongArgumentException("На ноль делить нельзя");
         }
             return num1 / num2;
         }
