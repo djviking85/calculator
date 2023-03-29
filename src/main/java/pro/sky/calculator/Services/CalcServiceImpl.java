@@ -9,7 +9,7 @@ import pro.sky.calculator.Exceptions.WrongArgumentException;
 public class CalcServiceImpl implements CalcService {
     public ResponseEntity<String> plus(Integer num1, Integer num2) {
         int result = num1 + num2;
-        return ResponseEntity.ok(String.format("%s - %s = %s", num1, num2, result));
+        return ResponseEntity.ok(String.format("%s + %s = %s", num1, num2, result));
     }
 
     public ResponseEntity<String> minus(Integer num1, Integer num2) {
@@ -20,7 +20,7 @@ public class CalcServiceImpl implements CalcService {
 
     public ResponseEntity<String> multiply(Integer num1, Integer num2) {
         int result = num1 * num2;
-        return ResponseEntity.ok(String.format("%s - %s = %s", num1, num2, result));
+        return ResponseEntity.ok(String.format("%s * %s = %s", num1, num2, result));
     }
 
     public ResponseEntity<String> divide(Integer num1, Integer num2) {
@@ -28,7 +28,7 @@ public class CalcServiceImpl implements CalcService {
             throw new WrongArgumentException("На ноль делить нельзя");
         }
         int result = num1 / num2;
-        return ResponseEntity.ok(String.format("%s - %s = %s", num1, num2, result));
+        return ResponseEntity.ok(String.format("%s : %s = %s", num1, num2, result));
         }
 
     public void exceptionNoNumber(Integer num1, Integer num2) {
