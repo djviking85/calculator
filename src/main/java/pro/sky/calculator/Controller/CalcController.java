@@ -2,21 +2,20 @@ package pro.sky.calculator.Controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pro.sky.calculator.Exceptions.WrongArgumentException;
 import pro.sky.calculator.Services.CalcService;
-import pro.sky.calculator.Exceptions.DivideToZeroException;
+import pro.sky.calculator.Services.CalcServiceImpl;
 import pro.sky.calculator.Exceptions.NoNumberExceptions;
 
 @RestController
 @RequestMapping("/calculator")
 public class CalcController {
-    public CalcController(CalcService calcService) {
+    private final CalcService calcService;
+    public CalcController(CalcServiceImpl calcService) {
         this.calcService = calcService;
     }
-
-    // честно взял с видео Алексея, тк. ни в контроллере ни в сервисе если указать num==0 -
-    // и вывести на ноль делить нельзя = выскакивала ошибка 500, и все стопилось
-    @ExceptionHandler(DivideToZeroException.class)
-    public ResponseEntity<?> handleDevideToZero(DivideToZeroException e) {
+    @ExceptionHandler(WrongArgumentException.class)
+    public ResponseEntity<?> handleDevideToZero(WrongArgumentException e) {
         return ResponseEntity.badRequest().body(" Делить на ноль нельзя");
     }
 
@@ -25,7 +24,6 @@ public class CalcController {
         return ResponseEntity.badRequest().body(" число не может бьыть пустым");
     }
 
-    private final CalcService calcService;
 
     @GetMapping()
     public String helloCalculator() {
@@ -34,7 +32,7 @@ public class CalcController {
 
     @GetMapping("/plus")
     public String plus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        int resultat = calcService.plus(num1, num2);
+        Integer resultat = calcService.plus(num1, num2);
         return num1 + "+" + num2 + "=" + resultat;
     }
 
