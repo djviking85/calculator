@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @ContextConfiguration(classes = {calcServiceImpl.class})
 @ExtendWith(SpringExtension.class)
 class calcServiceParamTest {
-    // создаем параметизированные тесты на +-*/
+    // создаем параметизированные тесты на +-*//
     @Autowired
     private pro.sky.calculator.Services.calcService calcService;
 
