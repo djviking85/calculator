@@ -1,8 +1,6 @@
 package pro.sky.calculator.Services;
 
-import org.assertj.core.internal.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -11,43 +9,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import pro.sky.calculator.Exceptions.WrongArgumentException;
-import pro.sky.calculator.utils.ResulGenerator;
+import pro.sky.calculator.utils.resulGenerator;
 
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@ContextConfiguration(classes = {CalcServiceImpl.class})
+@ContextConfiguration(classes = {calcServiceImpl.class})
 @ExtendWith(SpringExtension.class)
-class CalcServiceParamTest {
+class calcServiceParamTest {
     // создаем параметизированные тесты на +-*/
     @Autowired
-    private CalcService calcService;
+    private pro.sky.calculator.Services.calcService calcService;
 
     public static Stream<Arguments> divideParams() {
         return Stream.of(
-                Arguments.of(2, 2, ResulGenerator.divideResult(2, 2, 1)),
-                Arguments.of(100, 5, ResulGenerator.divideResult(100, 5, 20))
+                Arguments.of(2, 2, resulGenerator.divideResult(2, 2, 1)),
+                Arguments.of(100, 5, resulGenerator.divideResult(100, 5, 20))
         );
     }
     public static Stream<Arguments> plusParams() {
         return Stream.of(
-                Arguments.of(2, 2, ResulGenerator.plusResult(2, 2, 4)),
-                Arguments.of(100, 5, ResulGenerator.plusResult(100, 5, 105))
+                Arguments.of(2, 2, resulGenerator.plusResult(2, 2, 4)),
+                Arguments.of(100, 5, resulGenerator.plusResult(100, 5, 105))
         );
     }
     public static Stream<Arguments> minusParams() {
         return Stream.of(
-                Arguments.of(2, 2, ResulGenerator.minusResult(2, 2, 0)),
-                Arguments.of(100, 5, ResulGenerator.minusResult(100, 5,95))
+                Arguments.of(2, 2, resulGenerator.minusResult(2, 2, 0)),
+                Arguments.of(100, 5, resulGenerator.minusResult(100, 5,95))
         );
     }
     public static Stream<Arguments> multiplyParams() {
         return Stream.of(
-                Arguments.of(2, 2, ResulGenerator.multiplyResult(2, 2, 4)),
-                Arguments.of(100, 5, ResulGenerator.multiplyResult(100, 5, 500))
+                Arguments.of(2, 2, resulGenerator.multiplyResult(2, 2, 4)),
+                Arguments.of(100, 5, resulGenerator.multiplyResult(100, 5, 500))
         );
     }
     @ParameterizedTest

@@ -6,24 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import pro.sky.calculator.Exceptions.WrongArgumentException;
+import pro.sky.calculator.Exceptions.wrongArgumentException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ContextConfiguration(classes = {CalcServiceImpl.class})
+@ContextConfiguration(classes = {calcServiceImpl.class})
 @ExtendWith(SpringExtension.class)
-class CalcServiceTest {
+class calcServiceTest {
     // создаем тесты на +-*/
     @Autowired
-    private CalcService calcService;
+    private pro.sky.calculator.Services.calcService calcService;
     @Test
     void plusTestSuccess () {
         // подготовка входных данных
         Integer num1 = 2;
         Integer num2 = 5;
         // подготовка ожидаемого результата
-        String answer = "2+5 = 7";
-        Integer  expectedResult = num1 + num2;
+        String answer = "2 + 5 = 7";
+        ResponseEntity<String> expectedResult = ResponseEntity.ok(answer);
         // анчало теста
         ResponseEntity<String> actualResult = calcService.plus(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -35,8 +35,8 @@ class CalcServiceTest {
         Integer num1 = 4;
         Integer num2 = 4;
         // подготовка ожидаемого результата
-        String answer = "4+4 = 8";
-        Integer  expectedResult = num1 + num2;
+        String answer = "4 + 4 = 8";
+        ResponseEntity<String> expectedResult = ResponseEntity.ok(answer);
         // анчало теста
         ResponseEntity<String> actualResult = calcService.plus(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -48,8 +48,8 @@ class CalcServiceTest {
         Integer num1 = 2;
         Integer num2 = 5;
         // подготовка ожидаемого результата
-        String answer = "2-5 = -3";
-        Integer  expectedResult = num1 - num2;
+        String answer = "2 - 5 = -3";
+        ResponseEntity<String> expectedResult = ResponseEntity.ok(answer);
         // анчало теста
         ResponseEntity<String> actualResult = calcService.minus(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -60,8 +60,8 @@ class CalcServiceTest {
         Integer num1 = 7;
         Integer num2 = 3;
         // подготовка ожидаемого результата
-        String answer = "7+3 = 5";
-        Integer  expectedResult = num1 - num2;
+        String answer = "7 - 3 = 4";
+        ResponseEntity<String> expectedResult = ResponseEntity.ok(answer);
         // анчало теста
         ResponseEntity<String> actualResult = calcService.minus(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -72,8 +72,8 @@ class CalcServiceTest {
         Integer num1 = 2;
         Integer num2 = 5;
         // подготовка ожидаемого результата
-        String answer = "2*5 = 10";
-        Integer  expectedResult = num1 * num2;
+        String answer = "2 * 5 = 10";
+        ResponseEntity<String> expectedResult = ResponseEntity.ok(answer);
         // анчало теста
         ResponseEntity<String> actualResult = calcService.multiply(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -84,8 +84,8 @@ class CalcServiceTest {
         Integer num1 = 100;
         Integer num2 = 100;
         // подготовка ожидаемого результата
-        String answer = "100*100 = 10000";
-        Integer expectedResult = num1 * num2;
+        String answer = "100 * 100 = 10000";
+        ResponseEntity<String> expectedResult = ResponseEntity.ok(answer);
         // анчало теста
         ResponseEntity<String> actualResult = calcService.multiply(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -99,7 +99,7 @@ class CalcServiceTest {
         Integer num2 = 100;
         // подготовка ожидаемого результата
         String answer = "100 : 100 = 1";
-        Integer expectedResult = num1 / num2;
+        ResponseEntity<String> expectedResult = ResponseEntity.ok(answer);
         // анчало теста
         ResponseEntity<String> actualResult = calcService.divide(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -112,7 +112,7 @@ class CalcServiceTest {
         Integer num2 = 5;
         // подготовка ожидаемого результата
         String answer = "100 : 5 = 20";
-        Integer expectedResult = num1 / num2;
+        ResponseEntity<String> expectedResult = ResponseEntity.ok(answer);
         // анчало теста
         ResponseEntity<String> actualResult = calcService.divide(num1, num2);
         assertEquals(expectedResult, actualResult);
@@ -124,7 +124,7 @@ class CalcServiceTest {
         Integer num1 = 100;
         Integer num2 = 0;
         // подготовка ожидаемого результата
-        Exception exception = assertThrows (WrongArgumentException.class,() -> {calcService.divide(num1, num2);}
+        Exception exception = assertThrows (wrongArgumentException.class,() -> {calcService.divide(num1, num2);}
         );
             String exceptMessage = "На ноль делить нельзя";
         // анчало теста

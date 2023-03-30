@@ -2,25 +2,24 @@ package pro.sky.calculator.Controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pro.sky.calculator.Exceptions.WrongArgumentException;
-import pro.sky.calculator.Services.CalcService;
-import pro.sky.calculator.Services.CalcServiceImpl;
-import pro.sky.calculator.Exceptions.NoNumberExceptions;
+import pro.sky.calculator.Exceptions.wrongArgumentException;
+import pro.sky.calculator.Services.calcServiceImpl;
+import pro.sky.calculator.Exceptions.noNumberExceptions;
 
 @RestController
 @RequestMapping("/calculator")
-public class CalcController {
-    private final CalcService calcService;
-    public CalcController(CalcServiceImpl calcService) {
+public class calcController {
+    private final pro.sky.calculator.Services.calcService calcService;
+    public calcController(calcServiceImpl calcService) {
         this.calcService = calcService;
     }
-    @ExceptionHandler(WrongArgumentException.class)
-    public ResponseEntity<?> handleDevideToZero(WrongArgumentException e) {
+    @ExceptionHandler(wrongArgumentException.class)
+    public ResponseEntity<?> handleDevideToZero(wrongArgumentException e) {
         return ResponseEntity.badRequest().body(" Делить на ноль нельзя");
     }
 
-    @ExceptionHandler(NoNumberExceptions.class)
-    public ResponseEntity<?> noNumberInPrint(NoNumberExceptions e) {
+    @ExceptionHandler(noNumberExceptions.class)
+    public ResponseEntity<?> noNumberInPrint(noNumberExceptions e) {
         return ResponseEntity.badRequest().body(" число не может бьыть пустым");
     }
 
